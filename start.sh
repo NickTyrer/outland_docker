@@ -20,7 +20,8 @@ sleep 10
 
 ##JOIN ZEROTIER NETWORK
 zerotier-cli join $ZT_NET
-while [ -z $(ip a | grep zt | grep inet | awk '{print $2}' | cut -d / -f 1) ] ; do sleep 10; done; ZT_IP=$(ip a | grep zt | grep inet | awk '{print $2}' | cut -d / -f 1)
+while [ -z $(ip a | grep zt | grep inet | awk '{print $2}' | cut -d / -f 1) ] ; do sleep 10; done;
+ZT_IP=$(ip a | grep zt | grep inet | awk '{print $2}' | cut -d / -f 1)
 mysql -u root tbcrealmd -e "UPDATE realmlist SET address = '$ZT_IP' WHERE id = 1;"
 
 
