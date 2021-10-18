@@ -2,7 +2,7 @@
 ##UPDATE
 export DEBIAN_FRONTEND=noninteractive
 apt update -qq && apt full-upgrade -y -qq
-apt install -qq -y build-essential gcc g++ automake git-core autoconf make patch libmysql++-dev libtool libssl-dev grep binutils zlibc libc6 libbz2-dev cm$
+apt install -qq -y build-essential gcc g++ automake git-core autoconf make patch libmysql++-dev libtool libssl-dev grep binutils zlibc libc6 libbz2-dev cmake subversion libboost-all-dev iptables sudo curl ssh wget tmux mariadb-server
 curl -s https://install.zerotier.com | bash
 
 
@@ -27,7 +27,7 @@ mysql -u root tbccharacters < /opt/outland/core/sql/base/characters.sql
 mysql -u root tbclogs < /opt/outland/core/sql/base/logs.sql
 mysql -u root tbcrealmd < /opt/outland/core/sql/base/realmd.sql
 mysql -u root tbcrealmd -e "DELETE FROM realmlist WHERE id=1;"
-mysql -u root tbcrealmd -e "INSERT INTO realmlist (id, name, address, port, icon, realmflags, timezone, allowedSecurityLevel, realmbuilds) VALUES ('1', 'H$
+mysql -u root tbcrealmd -e "INSERT INTO realmlist (id, name, address, port, icon, realmflags, timezone, allowedSecurityLevel, realmbuilds) VALUES ('1', 'Hellscream', '127.0.0.1', '8085', '1', '0', '1', '0', 8606);"
 cd /opt/outland/db/ && ./InstallFullDB.sh
 sed -i 's/CORE_PATH=""/CORE_PATH="\/opt\/outland\/core"/' /opt/outland/db/InstallFullDB.config
 ./InstallFullDB.sh
